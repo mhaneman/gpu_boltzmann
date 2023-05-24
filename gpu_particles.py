@@ -9,12 +9,12 @@ class GpuParticles:
         
         # initalize position and velocities
         self.positions = torch.rand((2, self.num_of_particles)).to(device)
-        self.velocities = torch.zeros((2, self.num_of_particles)).to(device)
-
-        # boolean identities
-        # maybe change to a property of plotting
         self.particles_left = self.positions[0] < 0.5
         self.particles_right = self.positions[0] > 0.5
+
+        self.velocities = torch.zeros((2, self.num_of_particles)).to(device)
+        self.velocities[0][self.particles_left] = 500
+        self.velocities[0][self.particles_right] = -500
 
         # relationship between particles
         self.ids = torch.arange(self.num_of_particles)

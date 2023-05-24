@@ -6,7 +6,9 @@ from plotting import Plotting
 
 if __name__ == "__main__":
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    gpu_particles = GpuParticles(device=device, num_of_particles=10_000, radius=0.001)
+
+    torch.cuda.empty_cache()
+    gpu_particles = GpuParticles(device=device, num_of_particles=10_000, radius=0.0005)
     rs, vs = gpu_particles.motion(ts=1000, dt=0.000008)
 
     plot = Plotting()

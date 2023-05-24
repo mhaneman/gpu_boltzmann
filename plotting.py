@@ -42,4 +42,4 @@ class Plotting:
 
         writer = animation.FFMpegWriter(fps=30)
         ani = animation.FuncAnimation(fig, animate, frames=500, interval=50, blit=True)
-        ani.save('my_sim_gpu.mp4',writer=writer,dpi=100)
+        ani.save('plots/my_sim_gpu.mp4',writer=writer,dpi=100)
